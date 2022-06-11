@@ -1,0 +1,7 @@
+.products-container {
+  display: grid;
+  justify-content: space-evenly;
+  grid-template-columns: auto auto auto;
+  margin: 10px 30px;
+  gap: 10px;
+}

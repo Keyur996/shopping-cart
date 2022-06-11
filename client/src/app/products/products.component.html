@@ -1,0 +1,20 @@
+<span *ngIf="products; else noProduct">
+  <div class="products-container">
+    <span *ngFor="let product of products; let i = index">
+      <app-product-item [product]="product"></app-product-item>
+      <br *ngIf="i % 3 === 0" />
+    </span>
+  </div>
+
+  <mat-paginator
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    aria-label="Select page"
+    (page)="pageChanged($event)"
+  >
+  </mat-paginator>
+</span>
+<ng-template #noProduct>
+  <div>No Product found !!</div>
+</ng-template>

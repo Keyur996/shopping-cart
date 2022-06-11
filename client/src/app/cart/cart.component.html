@@ -1,0 +1,22 @@
+<span *ngIf="cart">
+  <mat-card *ngFor="let cartItem of cart.items">
+    <img [src]="cartItem?.product?.image" [alt]="cartItem?.product?.name" />
+    <h3>{{ cartItem?.product?.name }}</h3>
+    <h3>Total Amount: {{ cartItem.totalAmount | currency }}</h3>
+    <span *ngIf="cartItem?.quantity! > 0">
+      <button
+        mat-button
+        (click)="updateQuntity(cartItem?.product!, cartItem?.quantity! - 1)"
+      >
+        <mat-icon>remove</mat-icon>
+      </button>
+      {{ cartItem?.quantity }}
+      <button
+        mat-button
+        (click)="updateQuntity(cartItem?.product!, cartItem.quantity! + 1)"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </span>
+  </mat-card>
+</span>

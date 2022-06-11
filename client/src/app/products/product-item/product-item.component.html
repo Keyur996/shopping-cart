@@ -1,0 +1,35 @@
+<mat-card class="example-card" fxLayoutAlign="center stretch" *ngIf="product">
+  <mat-card-header>
+    {{ product.name }}
+  </mat-card-header>
+  <img mat-card-image [src]="product.image" alt="Photo of a Shiba Inu" />
+  <mat-card-content>
+    <h4>Price : {{ product.price | currency }}</h4>
+    Colors: {{ product.colors }}, Categories: {{ product.categories }}
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      *ngIf="product?.quantity === 0"
+      mat-button
+      type="button"
+      (click)="addToCart(product)"
+    >
+      Add To Cart
+    </button>
+    <div *ngIf="product?.quantity! > 0">
+      <button
+        mat-button
+        (click)="updateQuntity(product, product?.quantity! - 1)"
+      >
+        <mat-icon>remove</mat-icon>
+      </button>
+      {{ product?.quantity }}
+      <button
+        mat-button
+        (click)="updateQuntity(product, product?.quantity! + 1)"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>
